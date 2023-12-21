@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>雪虎趣味知识</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-image: url("img/bg.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    
+    #fact-container {
+      max-width: 600px;
+      margin: 50px auto;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    h2 {
+      color: #FFA042;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    
+    p {
+      color: #5B4B00;
+      font-size: 18px;
+      line-height: 1.5;
+      margin-bottom: 30px;
+    }
+    
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #808000;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    button:hover {
+      background-color: #4F4F4F;
+    }
+	@keyframes jump {
+	    0% { transform: translateY(0); }
+	    50% { transform: translateY(-5px); }
+	    100% { transform: translateY(0); }
+	  }
+	
+	  #fact-text:hover {
+	    animation: jump 0.5s infinite;
+	  }
+	  #image-container {
+	    width: 100%;
+	    height: 500px;
+	    position: relative;
+	    overflow: hidden;
+	  }
+	  
+	  #image-container img {
+	    width: 100%;
+	    height: 100%;
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    opacity: 0;
+	    transition: opacity 0.5s ease;
+	  }
+	  
+	  #image-container .active {
+	    opacity: 1;
+	  }
+  </style>
+</head>
+<body>
+	
+  <div id="fact-container">
+    <h2>雪虎趣味知识</h2>
+    <p id="fact-text">点击下面的按钮获取一个有趣的雪虎知识。</p>
+
+    <button onclick="generateFact()">生成知识</button>
+
+    <script>
+      function generateFact() {
+        // 存储关于白虎的随机知识的数组
+        var facts = [
+          "雪虎是由基因突变引起的，它们有美丽的白色皮毛和蓝色的眼睛。",
+          "雪虎是非常罕见的，其在野外的数量比一般的虎要稀少得多。",
+          "雪虎通常出现在孟加拉虎和西伯利亚虎这两个亚种中。",
+          "雪虎不是一个独立的虎种，只是一个颜色变异。",
+          "与其他虎相比，雪虎的繁殖受到一些基因缺陷的影响，使其很难在野外存活。",
+          "雪虎的毛色是由体内特定基因的突变所致，这也是它们为什么如此特殊和珍贵的原因之一。"
+        ];
+      
+        // 从数组中随机选择一条知识
+        var randomFact = facts[Math.floor(Math.random() * facts.length)];
+      
+        // 更新知识文本
+        document.getElementById("fact-text").textContent = randomFact;
+      
+        // 切换图片
+        var imageContainer = document.getElementById("image-container");
+        var tigerImage1 = document.getElementById("tiger-image");
+        var tigerImage2 = document.getElementById("tiger-image2");
+      
+        if (tigerImage1.classList.contains("active")) {
+          tigerImage1.classList.remove("active");
+          tigerImage2.classList.add("active");
+        } else {
+          tigerImage1.classList.add("active");
+          tigerImage2.classList.remove("active");
+        }
+      }
+    </script>
+  </div>
+  <div id="image-container">
+    <img id="tiger-image" src="img/dog.jpg">
+    <img id="tiger-image2" src="img/world.jpg">
+  </div>
+</body>
+</html>
